@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <properties>
+        <title>Module Chatbot BotAvatar</title>
+    </properties>
+    <head>
+        <!-- Keywords example : "cms, authentication, cms, workflow, seo, collaborative, ..." 
+             Use the language of this xdoc -->
+        <meta name="keywords" content="" />
+    </head>
+    <body>
+        <section name="Module Chatbot BotAvatar">
+            <!--
+            <p>
+                <img src="images/botavatar.png" />
+            </p>
+            -->
+            <subsection name="Introduction">
+                <p>This module of the <a href="https://github.com/lutece-platform/lutece-chat-plugin-chatbot">Lutece Chat Bot plugin</a> offers the ability to render a specific avatar image depending on the bot response</p>
+            </subsection>
+            <subsection name="Configuration">
+                <p>An Admin Feature in the Back Office lets you create association between Bot responses and Avatar URL</p>
+            </subsection>
+        </section>
+    </body>
+</document>
+
