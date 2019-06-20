@@ -57,6 +57,6 @@ public class BotAvatarRenderer extends BaseAvatarRenderer implements AvatarRende
     public void renderAvatar( Post post )
     {
         String strAvatarUrl = BotAvatarService.getAvatarUrl( post.getContent( ), _strDefaultAvatarUrl );
-        setAvatarUrl( strAvatarUrl );
+        post.setAvatarUrl( strAvatarUrl );
     }
 }

@@ -1,14 +1,11 @@
-<#include "managechatbotavatars_tabs.html" />
-<@tabs tab="avatarassociation" />
-
 <@rowBox>
-    <@boxHeader i18nTitleKey="botavatar.manage_avatarassociations.title">
+    <@boxHeader i18nTitleKey="module.chatbot.botavatar.manage_avatarassociations.title">
         <@headerButtons>
 
 
-        <form class="form-inline pull-right" method="post" name="manage_avatarassociations" action="jsp/admin/plugins/botavatar/ManageAvatarAssociations.jsp">
+        <form class="form-inline pull-right" method="post" name="manage_avatarassociations" action="jsp/admin/plugins/chatbot/modules/botavatar/ManageAvatarAssociations.jsp">
             <!-- Add pull-right to class1 -->
-            <@actionButtons button1Name="view_createAvatarAssociation" icon1="icon-plus icon-white" i18nValue1Key="botavatar.manage_avatarassociations.buttonAdd" />
+            <@actionButtons button1Name="view_createAvatarAssociation" icon1="icon-plus icon-white" i18nValue1Key="module.chatbot.botavatar.manage_avatarassociations.buttonAdd" />
         </form>
 
     </@headerButtons>
@@ -20,8 +17,9 @@
     <@table>
         <tr>
             <input type="hidden" id="id" name="id"/>
-            <th>#i18n{botavatar.manage_avatarassociations.columnResponse}</th>
-            <th>#i18n{botavatar.manage_avatarassociations.columnAvatarUrl}</th>
+            <th>#i18n{module.chatbot.botavatar.manage_avatarassociations.columnResponse}</th>
+            <th>#i18n{module.chatbot.botavatar.manage_avatarassociations.columnAvatarUrl}</th>
+            <th>&nbsp;</th>
             <th>#i18n{portal.util.labelActions}</th>
         </tr>
         <@tableHeadBodySeparator />
@@ -34,13 +32,16 @@
             <td>
                 ${avatarassociation.avatarUrl}
             </td>
+            <td>
+                <img src="${avatarassociation.avatarUrl}" alt="avatar preview" />
+            </td>
         <td>
-            <a href="jsp/admin/plugins/botavatar/ManageAvatarAssociations.jsp?view=modifyAvatarAssociation&id=${avatarassociation.id}"
+            <a href="jsp/admin/plugins/chatbot/modules/botavatar/ManageAvatarAssociations.jsp?view=modifyAvatarAssociation&id=${avatarassociation.id}"
                class="btn btn-primary btn-sm" title="#i18n{portal.util.labelModify}">
                 <i class="fa fa-pencil"></i>
             </a>
 
-            <a href="jsp/admin/plugins/botavatar/ManageAvatarAssociations.jsp?action=confirmRemoveAvatarAssociation&id=${avatarassociation.id}"
+            <a href="jsp/admin/plugins/chatbot/modules/botavatar/ManageAvatarAssociations.jsp?action=confirmRemoveAvatarAssociation&id=${avatarassociation.id}"
                class="btn btn-danger btn-sm" title="#i18n{portal.util.labelDelete}" >
                 <i class="fa fa-trash"></i>
             </a>

@@ -1,0 +1,11 @@
+
+<@rowBoxHeader i18nTitleKey="module.chatbot.botavatar.create_avatarassociation.title">
+    <form class="form-horizontal" method="post" name="create_avatarassociation" action="jsp/admin/plugins/chatbot/modules/botavatar/ManageAvatarAssociations.jsp">
+        <@messages errors=errors />
+        <input type="hidden" id="id" name="id"/>
+
+        <@fieldInputText i18nLabelKey="module.chatbot.botavatar.create_avatarassociation.labelResponse" inputName="response" mandatory=true value="${avatarassociation.response!''}" i18nHelpBlockKey="module.chatbot.botavatar.create_avatarassociation.labelResponse.help" />
+        <@fieldInputText i18nLabelKey="module.chatbot.botavatar.create_avatarassociation.labelAvatarUrl" inputName="avatar_url" mandatory=true value="${avatarassociation.avatarUrl!''}" i18nHelpBlockKey="module.chatbot.botavatar.create_avatarassociation.labelAvatarUrl.help" />
+        <@actionButtons button1Name="action_createAvatarAssociation" button2Name="view_manageAvatarAssociations"/>
+    </form>
+</@rowBoxHeader>

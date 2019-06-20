@@ -54,29 +54,29 @@ import javax.servlet.http.HttpServletRequest;
 public class AvatarAssociationJspBean extends AbstractManageChatbotAvatarsJspBean
 {
     // Templates
-    private static final String TEMPLATE_MANAGE_AVATARASSOCIATIONS = "/admin/plugins/botavatar/manage_avatarassociations.html";
-    private static final String TEMPLATE_CREATE_AVATARASSOCIATION = "/admin/plugins/botavatar/create_avatarassociation.html";
-    private static final String TEMPLATE_MODIFY_AVATARASSOCIATION = "/admin/plugins/botavatar/modify_avatarassociation.html";
+    private static final String TEMPLATE_MANAGE_AVATARASSOCIATIONS = "/admin/plugins/chatbot/modules/botavatar/manage_avatarassociations.html";
+    private static final String TEMPLATE_CREATE_AVATARASSOCIATION = "/admin/plugins/chatbot/modules/botavatar/create_avatarassociation.html";
+    private static final String TEMPLATE_MODIFY_AVATARASSOCIATION = "/admin/plugins/chatbot/modules/botavatar/modify_avatarassociation.html";
 
     // Parameters
     private static final String PARAMETER_ID_AVATARASSOCIATION = "id";
 
     // Properties for page titles
-    private static final String PROPERTY_PAGE_TITLE_MANAGE_AVATARASSOCIATIONS = "botavatar.manage_avatarassociations.pageTitle";
-    private static final String PROPERTY_PAGE_TITLE_MODIFY_AVATARASSOCIATION = "botavatar.modify_avatarassociation.pageTitle";
-    private static final String PROPERTY_PAGE_TITLE_CREATE_AVATARASSOCIATION = "botavatar.create_avatarassociation.pageTitle";
+    private static final String PROPERTY_PAGE_TITLE_MANAGE_AVATARASSOCIATIONS = "module.chatbot.botavatar.manage_avatarassociations.pageTitle";
+    private static final String PROPERTY_PAGE_TITLE_MODIFY_AVATARASSOCIATION = "module.chatbot.botavatar.modify_avatarassociation.pageTitle";
+    private static final String PROPERTY_PAGE_TITLE_CREATE_AVATARASSOCIATION = "module.chatbot.botavatar.create_avatarassociation.pageTitle";
 
     // Markers
     private static final String MARK_AVATARASSOCIATION_LIST = "avatarassociation_list";
     private static final String MARK_AVATARASSOCIATION = "avatarassociation";
 
-    private static final String JSP_MANAGE_AVATARASSOCIATIONS = "jsp/admin/plugins/botavatar/ManageAvatarAssociations.jsp";
+    private static final String JSP_MANAGE_AVATARASSOCIATIONS = "jsp/admin/plugins/chatbot/modules/botavatar/ManageAvatarAssociations.jsp";
 
     // Properties
-    private static final String MESSAGE_CONFIRM_REMOVE_AVATARASSOCIATION = "botavatar.message.confirmRemoveAvatarAssociation";
+    private static final String MESSAGE_CONFIRM_REMOVE_AVATARASSOCIATION = "module.chatbot.botavatar.message.confirmRemoveAvatarAssociation";
 
     // Validations
-    private static final String VALIDATION_ATTRIBUTES_PREFIX = "botavatar.model.entity.avatarassociation.attribute.";
+    private static final String VALIDATION_ATTRIBUTES_PREFIX = "module.chatbot.botavatar.model.entity.avatarassociation.attribute.";
 
     // Views
     private static final String VIEW_MANAGE_AVATARASSOCIATIONS = "manageAvatarAssociations";
@@ -90,9 +90,9 @@ public class AvatarAssociationJspBean extends AbstractManageChatbotAvatarsJspBea
     private static final String ACTION_CONFIRM_REMOVE_AVATARASSOCIATION = "confirmRemoveAvatarAssociation";
 
     // Infos
-    private static final String INFO_AVATARASSOCIATION_CREATED = "botavatar.info.avatarassociation.created";
-    private static final String INFO_AVATARASSOCIATION_UPDATED = "botavatar.info.avatarassociation.updated";
-    private static final String INFO_AVATARASSOCIATION_REMOVED = "botavatar.info.avatarassociation.removed";
+    private static final String INFO_AVATARASSOCIATION_CREATED = "module.chatbot.botavatar.info.avatarassociation.created";
+    private static final String INFO_AVATARASSOCIATION_UPDATED = "module.chatbot.botavatar.info.avatarassociation.updated";
+    private static final String INFO_AVATARASSOCIATION_REMOVED = "module.chatbot.botavatar.info.avatarassociation.removed";
 
     // Session variable to store working values
     private AvatarAssociation _avatarassociation;

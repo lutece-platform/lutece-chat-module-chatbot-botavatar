@@ -56,7 +56,7 @@ public class BotAvatarService
     {
         for ( AvatarAssociation association : AvatarAssociationHome.getAvatarAssociationsList( ) )
         {
-            if ( StringUtils.indexOfIgnoreCase( strContent, association.getResponse( ) ) > 0 )
+            if ( StringUtils.indexOfIgnoreCase( strContent, association.getResponse( ) ) >= 0 )
             {
                 return association.getAvatarUrl( );
             }
