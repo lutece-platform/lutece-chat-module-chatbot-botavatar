@@ -8,7 +8,7 @@
 
     <bean id="chatbot-botavatar.avatarRenderer" class="fr.paris.lutece.plugins.chatbot.modules.botavatar.service.BotAvatarRenderer"> 
         <property name="key" value="dynamic"/>
-        <property name="name" value="Avatar dynamiques" />
+        <property name="name" value="Avatars dynamiques" />
         <property name="defaultAvatarUrl" value="images/skin/plugins/chatbot/bot-avatar.png" /> 
     </bean>
     
