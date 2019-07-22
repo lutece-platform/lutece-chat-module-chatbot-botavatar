@@ -38,9 +38,13 @@ import fr.paris.lutece.plugins.chatbot.modules.botavatar.business.AvatarAssociat
 import fr.paris.lutece.plugins.chatbot.modules.botavatar.business.AvatarAssociationHome;
 import fr.paris.lutece.portal.service.message.AdminMessage;
 import fr.paris.lutece.portal.service.message.AdminMessageService;
+import fr.paris.lutece.portal.service.util.AppPropertiesService;
+import fr.paris.lutece.portal.util.mvc.admin.MVCAdminJspBean;
 import fr.paris.lutece.portal.util.mvc.admin.annotations.Controller;
 import fr.paris.lutece.portal.util.mvc.commons.annotations.Action;
 import fr.paris.lutece.portal.util.mvc.commons.annotations.View;
+import fr.paris.lutece.portal.web.util.LocalizedPaginator;
+import fr.paris.lutece.util.html.Paginator;
 import fr.paris.lutece.util.url.UrlItem;
 
 import java.util.List;
@@ -50,8 +54,8 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * This class provides the user interface to manage AvatarAssociation features ( manage, create, modify, remove )
  */
-@Controller( controllerJsp = "ManageAvatarAssociations.jsp", controllerPath = "jsp/admin/plugins/botavatar/", right = "BOTAVATAR_MANAGEMENT" )
-public class AvatarAssociationJspBean extends AbstractManageChatbotAvatarsJspBean
+@Controller( controllerJsp = "ManageAvatarAssociations.jsp", controllerPath = "jsp/admin/plugins/chatbot/modules/botavatar/", right = "BOTAVATAR_MANAGEMENT" )
+public class AvatarAssociationJspBean extends MVCAdminJspBean
 {
     // Templates
     private static final String TEMPLATE_MANAGE_AVATARASSOCIATIONS = "/admin/plugins/chatbot/modules/botavatar/manage_avatarassociations.html";
@@ -94,7 +98,24 @@ public class AvatarAssociationJspBean extends AbstractManageChatbotAvatarsJspBea
     private static final String INFO_AVATARASSOCIATION_UPDATED = "module.chatbot.botavatar.info.avatarassociation.updated";
     private static final String INFO_AVATARASSOCIATION_REMOVED = "module.chatbot.botavatar.info.avatarassociation.removed";
 
-    // Session variable to store working values
+    // Rights
+    public static final String RIGHT_MANAGECHATBOTAVATARS = "BOTAVATAR_MANAGEMENT";
+
+    // Properties
+    private static final String PROPERTY_DEFAULT_LIST_ITEM_PER_PAGE = "botavatar.listItems.itemsPerPage";
+
+    // Parameters
+    private static final String PARAMETER_PAGE_INDEX = "page_index";
+
+    // Markers
+    private static final String MARK_PAGINATOR = "paginator";
+    private static final String MARK_NB_ITEMS_PER_PAGE = "nb_items_per_page";
+
+    // Variables
+    private int _nDefaultItemsPerPage;
+    private String _strCurrentPageIndex;
+    private int _nItemsPerPage;
+
     private AvatarAssociation _avatarassociation;
 
     /**
@@ -239,4 +260,39 @@ public class AvatarAssociationJspBean extends AbstractManageChatbotAvatarsJspBea
 
         return redirectView( request, VIEW_MANAGE_AVATARASSOCIATIONS );
     }
+    
+    /**
+     * Return a model that contains the list and paginator infos
+     * 
+     * @param request
+     *            The HTTP request
+     * @param strBookmark
+     *            The bookmark
+     * @param list
+     *            The list of item
+     * @param strManageJsp
+     *            The JSP
+     * @return The model
+     */
+    private <T> Map<String, Object> getPaginatedListModel( HttpServletRequest request, String strBookmark, List<T> list, String strManageJsp )
+    {
+        _strCurrentPageIndex = Paginator.getPageIndex( request, Paginator.PARAMETER_PAGE_INDEX, _strCurrentPageIndex );
+        _nDefaultItemsPerPage = AppPropertiesService.getPropertyInt( PROPERTY_DEFAULT_LIST_ITEM_PER_PAGE, 50 );
+        _nItemsPerPage = Paginator.getItemsPerPage( request, Paginator.PARAMETER_ITEMS_PER_PAGE, _nItemsPerPage, _nDefaultItemsPerPage );
+
+        UrlItem url = new UrlItem( strManageJsp );
+        String strUrl = url.getUrl( );
+
+        // PAGINATOR
+        LocalizedPaginator<T> paginator = new LocalizedPaginator<T>( list, _nItemsPerPage, strUrl, PARAMETER_PAGE_INDEX, _strCurrentPageIndex, getLocale( ) );
+
+        Map<String, Object> model = getModel( );
+
+        model.put( MARK_NB_ITEMS_PER_PAGE, String.valueOf( _nItemsPerPage ) );
+        model.put( MARK_PAGINATOR, paginator );
+        model.put( strBookmark, paginator.getPageItems( ) );
+
+        return model;
+    }    // Session variable to store working values
+    
 }
